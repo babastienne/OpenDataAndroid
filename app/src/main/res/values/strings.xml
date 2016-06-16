@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">OpenDataAndroid</string>
+    <string name="app_name">Toilett\'où ?</string>
+    <string name="descriptionTop">Selectionnez le lieux à partir duquel vous cherchez les toilettes publiques les plus proches (par défaut votre position) :</string>
 </resources>
