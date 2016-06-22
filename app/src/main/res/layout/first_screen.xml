@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/descriptionLimit"
-                android:id="@+id/textView"
+                android:id="@+id/resultsViewToDisplay"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="51dp"
                 android:layout_centerVertical="true"

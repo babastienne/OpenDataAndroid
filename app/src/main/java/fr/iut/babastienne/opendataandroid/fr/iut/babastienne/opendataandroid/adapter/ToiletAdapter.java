@@ -15,6 +15,7 @@ import fr.iut.babastienne.opendataandroid.fr.iut.babastienne.opendataandroid.bea
 
 /**
  * Created by Bastien on 22/06/2016.
+ * This class create and complete the listView used to see the toilets
  */
 public class ToiletAdapter extends ArrayAdapter<Toilet> {
 
@@ -41,7 +42,6 @@ public class ToiletAdapter extends ArrayAdapter<Toilet> {
         } else {
             infosHoraires.setText("");
         }
-
 
         TextView accessibilitePMR = (TextView) row.findViewById(R.id.accessibilitePMR);
         if (item.isAccessibilitePMR()) {

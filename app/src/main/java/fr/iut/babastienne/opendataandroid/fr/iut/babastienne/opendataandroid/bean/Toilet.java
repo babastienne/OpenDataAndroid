@@ -11,6 +11,7 @@ import org.json.JSONObject;
  * Created by Bastien on 21/06/2016.
  */
 public class Toilet {
+    private String jsonObject;
     private String id;
     private String adresse;
     private String commune;
@@ -21,20 +22,9 @@ public class Toilet {
     private String infosHoraires;
     private LatLng geoLocation;
 
-    public Toilet(String id, String adresse, String commune, String pole, String type, boolean automatique, boolean accessibilitePMR, String infosHoraires, LatLng geoLocation) {
-        this.id = id;
-        this.adresse = adresse;
-        this.commune = commune;
-        this.pole = pole;
-        this.type = type;
-        this.automatique = automatique;
-        this.accessibilitePMR = accessibilitePMR;
-        this.infosHoraires = infosHoraires;
-        this.geoLocation = geoLocation;
-    }
-
     public Toilet(JSONObject jsonObject) {
         try {
+            this.jsonObject = jsonObject.toString();
             this.id = jsonObject.getJSONObject("geo").getString("name");
             this.adresse = jsonObject.getString("ADRESSE");
             this.commune = jsonObject.getString("COMMUNE");
@@ -47,6 +37,14 @@ public class Toilet {
         } catch (JSONException e) {
             Log.e("LOG", "Error duiring the creation of the 'Toilet' object. Message = " + e.getMessage());
         }
+    }
+
+    public String getJsonObject() {
+        return this.jsonObject;
+    }
+
+    public void setJsonObject(String jsonObject) {
+        this.jsonObject = jsonObject;
     }
 
     public String getId() {
@@ -119,5 +117,21 @@ public class Toilet {
 
     public void setGeoLocation(LatLng geoLocation) {
         this.geoLocation = geoLocation;
+    }
+
+    @Override
+    public String toString() {
+        return "Toilet{" +
+                "jsonObject='" + jsonObject + '\'' +
+                ", id='" + id + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", commune='" + commune + '\'' +
+                ", pole='" + pole + '\'' +
+                ", type='" + type + '\'' +
+                ", automatique=" + automatique +
+                ", accessibilitePMR=" + accessibilitePMR +
+                ", infosHoraires='" + infosHoraires + '\'' +
+                ", geoLocation=" + geoLocation +
+                '}';
     }
 }

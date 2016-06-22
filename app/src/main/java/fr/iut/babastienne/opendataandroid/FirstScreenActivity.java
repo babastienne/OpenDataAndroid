@@ -178,11 +178,14 @@ public class FirstScreenActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method get the Json text and generate Toilet objects. Then this function create the ListView with the toilets.
+     */
     public void jsonTraitement() {
         ArrayList<Toilet> listToilets = new ArrayList<>();
 
         try {
-            for (int index = 0; index < limit; index++) { // limit can't be > to 25. 25 is the lenght of the array 'jsonresult'
+            for (int index = 0; index < limit; index++) {
                 JSONObject result = jsonresults.getJSONObject(index);
 
                 Log.d("LOG", "Creation of a toilet object from the json");
@@ -198,6 +201,27 @@ public class FirstScreenActivity extends AppCompatActivity {
         ListView resultsView = (ListView) findViewById(R.id.resultsView);
 
         resultsView.setAdapter(new ToiletAdapter(this, listToilets));
+
+        // on ajoute un listener à la listView. Au clic sur un item on affiche un écran avec plus de détails.
+        resultsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                displayDetails((Toilet) parent.getItemAtPosition(position)); // on
+            }
+        });
+    }
+
+    /**
+     * This method launch another activity (DetailScreenActivity) with a toilet description in an intent
+     *
+     * @param toilet correspond to the parameter in the intent
+     */
+    public void displayDetails(Toilet toilet) {
+        Intent intent = new Intent(this, DetailScreenActivity.class); // creation of an intent
+        intent.putExtra(Intent.EXTRA_TEXT, toilet.getJsonObject()); // put all the Json object in the intent (best way to transfert an object from an activity to another if we don't want to implement a Parcelable object)
+
+        startActivity(intent); // launch the detailScreen wich show the details of a toilet
     }
 
 }
