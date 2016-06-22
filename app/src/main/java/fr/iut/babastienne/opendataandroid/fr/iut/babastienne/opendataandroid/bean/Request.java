@@ -14,12 +14,11 @@ public class Request {
     private int limit;
     private int offset = 0;
 
-
-    public Request(String nom_jeu, String nom_table, int limit) {
+    public Request() {
         this.body = "http://data.nantes.fr/api/publication/";
-        this.setNom_jeu(nom_jeu);
-        this.setNom_table(nom_table);
-        this.setLimit(limit);
+        this.setNom_jeu("24440040400129_NM_NM_00170"); // Obligatoire : correspond à l'API donnée dans les consignes
+        this.setNom_table("Toilettes_publiques_nm_STBL"); // Obligatoire : correspond à l'API donnée dans les consignes
+        this.setLimit(25); // choix de conception : on choisi de demander maximum 25 résultats
     }
 
     public String getNom_jeu() {
@@ -43,7 +42,7 @@ public class Request {
     }
 
     public void setFilter(LatLng position) {
-        this.filter = "{\"_l\":{\"$near\":[" + position.latitude + ", " + position.longitude + "]}}";
+        this.filter = "{\"_l\":{\"$near\":[" + position.latitude + "," + position.longitude + "]}}";
     }
 
     public int getLimit() {
@@ -66,6 +65,6 @@ public class Request {
     public String toString() {
         return (filter == null) ?
                 (body + nom_jeu + "/" + nom_table + "/content?format=" + format + "&limit=" + limit + "&offset=" + offset) :
-                (body + nom_jeu + "/" + nom_table + "/content?format=" + format + "&filter=" + filter + "&limit=" + limit + "&offset=" + offset);
+                (body + nom_jeu + "/" + nom_table + "/content?format=" + format + "&limit=" + limit + "&offset=" + offset + "&filter=" + filter);
     }
 }
