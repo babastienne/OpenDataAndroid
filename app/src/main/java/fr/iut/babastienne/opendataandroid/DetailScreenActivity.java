@@ -34,19 +34,23 @@ public class DetailScreenActivity extends AppCompatActivity {
 
         this.setTitle(toilet.getAdresse());
 
+        // Adresse
+        TextView adresse = (TextView) findViewById(R.id.adresse);
+        adresse.setText(toilet.getAdresse());
         TextView commune = (TextView) findViewById(R.id.commune);
         commune.setText("Commune : " + toilet.getCommune());
 
-        TextView pole = (TextView) findViewById(R.id.pole);
-        pole.setText("Nom du pôle de rattachement : " + toilet.getPole());
-
+        // Type
         TextView type = (TextView) findViewById(R.id.type);
-        if (toilet.getType() != "null") {
-            type.setText("Typologie des toilettes installées: " + toilet.getType());
+        if (toilet.getType().equals("Mobilier")) {
+            type.setText("Les toilettes sont du mobilier urbain");
+        } else if (toilet.getType().equals("Bâti")) {
+            type.setText("Les toilettes sont dans un bâtiment");
         } else {
             type.setText("");
         }
 
+        // Automatisme
         TextView automatique = (TextView) findViewById(R.id.automatique);
         if (toilet.isAutomatique()) {
             automatique.setText("Les toilettes sont automatiques");
@@ -54,6 +58,7 @@ public class DetailScreenActivity extends AppCompatActivity {
             automatique.setText("Les toilettes ne sont pas automatiques");
         }
 
+        // Accessibilite au PMR
         TextView accessibilite = (TextView) findViewById(R.id.accessibilitePMR);
         if (toilet.isAccessibilitePMR()) {
             accessibilite.setText("Les toilettes sont accessibles aux personnes à mobilité réduite");
@@ -61,12 +66,13 @@ public class DetailScreenActivity extends AppCompatActivity {
             accessibilite.setText("Les toilettes ne sont pas accessibles aux personnes à mobilité réduite");
         }
 
+        // Horaires
         TextView horaires = (TextView) findViewById(R.id.infosHoraires);
-        if (toilet.getInfosHoraires() == "en journée" || toilet.getInfosHoraires() == "journée") {
+        if (toilet.getInfosHoraires().equals("en journée") || toilet.getInfosHoraires().equals("journée")) {
             horaires.setText("Les toilettes sont accessibles uniquement en journée");
-        } else if (toilet.getInfosHoraires() == "restreints") {
+        } else if (toilet.getInfosHoraires().equals("restreints")) {
             horaires.setText("L'accès aux toilettes est restreint");
-        } else if (toilet.getInfosHoraires() == "24/24") {
+        } else if (toilet.getInfosHoraires().equals("24/24")) {
             horaires.setText(("Toilettes accessibles 24/24H"));
         } else {
             horaires.setText("Aucune information sur les horaires d'ouverture des toilettes");
@@ -74,7 +80,11 @@ public class DetailScreenActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Launch the navigation with google maps to the toilet
+     *
+     * @param v View of the button (method called by onClick)
+     */
     public void startNavigation(View v) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + Double.toString(toilet.getGeoLocation().latitude) + "," + Double.toString(toilet.getGeoLocation().longitude)));
         this.startActivity(intent);

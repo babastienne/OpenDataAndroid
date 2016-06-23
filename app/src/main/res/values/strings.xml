@@ -1,5 +1,14 @@
 <resources>
+    <!-- title of the app -->
     <string name="app_name">Toilett\'où ?</string>
-    <string name="descriptionTop">Selectionnez le lieux à partir duquel vous cherchez les toilettes publiques les plus proches (par défaut votre position) :</string>
+
+    <!-- Main screen -->
     <string name="descriptionLimit">Nombre de résultats à afficher : </string>
+    <string name="selectPlace">Selectionner un lieu</string>
+
+    <!-- Detail screen -->
+    <string name="buttonNavigation">Comment s\'y rendre ?</string>
+    <string name="horaires">HORAIRES</string>
+    <string name="infosCompl">INFORMATIOSN COMPLEMENTAIRES</string>
+    <string name="adresse">ADRESSE</string>
 </resources>

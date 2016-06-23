@@ -12,66 +12,86 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Commune"
         android:id="@+id/commune"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/pole"
-        android:layout_alignParentLeft="true" />
+        android:layout_below="@+id/adresse"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pole"
-        android:id="@+id/pole"
-        android:layout_below="@+id/automatique"
-        android:layout_alignParentLeft="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Type"
         android:id="@+id/type"
-        android:layout_below="@+id/location"
-        android:layout_alignParentLeft="true" />
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/accessibilitePMR"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Automatique"
         android:id="@+id/automatique"
-        android:layout_below="@+id/type"
-        android:layout_alignParentLeft="true" />
+        android:layout_below="@+id/infoFixe"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Accessibilite a PMR"
         android:id="@+id/accessibilitePMR"
+        android:layout_below="@+id/automatique"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/infosHoraires"
+        android:layout_below="@+id/horaireFixe"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonNavigation"
+        android:id="@+id/navigation"
+        android:onClick="startNavigation"
+        android:layout_below="@+id/type"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/horaires"
+        android:id="@+id/horaireFixe"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/commune"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="49dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/adresse"
+        android:id="@+id/adresseFixe"
+        android:textColor="@android:color/black"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Infos sur les horaires"
-        android:id="@+id/infosHoraires"
-        android:layout_below="@+id/commune"
-        android:layout_alignParentLeft="true" />
+        android:id="@+id/adresse"
+        android:layout_below="@+id/adresseFixe"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Localisation"
-        android:id="@+id/location"
-        android:layout_below="@+id/accessibilitePMR"
-        android:layout_alignParentLeft="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Navigation"
-        android:id="@+id/navigation"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="startNavigation" />
+        android:text="@string/infosCompl"
+        android:id="@+id/infoFixe"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/infosHoraires"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="55dp" />
 </RelativeLayout>
